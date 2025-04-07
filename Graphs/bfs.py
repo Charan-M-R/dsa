@@ -41,6 +41,21 @@ class BFSGraph:
         queue = [start_vertex]
         self.bfs_utils(visited, queue)
 
+    def bfs_iter(self, start_vertex_data):
+        start_vertex = self.vertex_data.index(start_vertex_data)
+        visited = [False]*self.size
+        queue = [start_vertex]
+
+        while queue:
+            v = queue.pop(0)
+            print(self.vertex_data[v], end=' ')
+            visited[v] = True
+
+            for i in range(self.size):
+                if self.adj_matrix[v][i] == 1 and not visited[i]:
+                    queue.append(i)
+                    visited[i] = True
+
 g = BFSGraph(7)
 
 g.add_vertex_data(0, 'A')
@@ -62,4 +77,6 @@ g.add_edge(2, 6)  # C - G
 g.add_edge(1, 5)  # B - F
 
 g.print_graph()  
-g.bfs('D')
+g.bfs('B')
+print()
+g.bfs_iter('B')
