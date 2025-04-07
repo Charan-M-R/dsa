@@ -24,12 +24,12 @@ class BFSGraph:
 
     def bfs_utils(self, visited, q):
         v = q.pop(0)
+        print(self.vertex_data[v], end=' ')
         visited[v] = True
 
         for i in range(self.size):
             if self.adj_matrix[v][i] == 1 and not visited[i]:
                 q.append(i)
-                print(self.vertex_data[i], end=' ')
                 visited[i] = True
                 
         if q!=[]:
@@ -39,7 +39,6 @@ class BFSGraph:
         start_vertex = self.vertex_data.index(start_vertex_data)
         visited = [False]*self.size
         queue = [start_vertex]
-        print(self.vertex_data[start_vertex], end=' ')
         self.bfs_utils(visited, queue)
 
 g = BFSGraph(7)
@@ -63,4 +62,4 @@ g.add_edge(2, 6)  # C - G
 g.add_edge(1, 5)  # B - F
 
 g.print_graph()  
-g.bfs('F')
+g.bfs('D')
