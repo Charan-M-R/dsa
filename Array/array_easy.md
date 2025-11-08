@@ -51,7 +51,27 @@ Count number of dips. Dip is when right element is less than left element. If nu
 **Time complexity:** O(n)
 
 ### 🟩 2. Remove duplicates from sorted array
-**Approach:**  
+
+**Approach 1:**  
+Use set to get distinct values. Traverse through the array - if element not present in set, add it to the set and accumulate the value in left side of nums
+
+**Code (Python):**
+```python
+    def removeDuplicates(self, nums):
+        dist = set()
+        ind = 0
+        for i in range(len(nums)):
+            if nums[i] not in dist:
+                dist.add(nums[i])
+                nums[ind] = nums[i]
+                ind += 1
+
+        return ind
+```
+**Time complexity:** O(n)
+**Space complexity:** O(n)
+
+**Approach 2:**  
 Keep accumulating the distinct values on the left side
 
 **Code (Python):**
