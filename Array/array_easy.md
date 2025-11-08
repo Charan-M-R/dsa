@@ -7,6 +7,8 @@
 Get the smallest element (if multiple, then left most). If there are multiple elements with smallest number and the smallest number is the last element, get to the leftmost in the cycle.
 Then traverse through the error with first element being the smallest (left most). If you come across right element being less than less, then return false
 
+Time complexity: O(n)
+
 **Code (Python):**
 ```python
     def check(self, nums):
@@ -34,6 +36,8 @@ Then traverse through the error with first element being the smallest (left most
 
 **Approach 2:**  
 Count number of dips. Dip is when right element is less than left element. If number of dips are greater than 1, return false
+
+Time complexity: O(n)
 
 **Code (Python):**
 ```python
