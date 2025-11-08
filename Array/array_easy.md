@@ -124,3 +124,20 @@ Reverse the arr. Reverse 0 to k-1 and Reverse k to len(nums)-1
             j-=1
 ```
 **Time complexity:** O(n)
+
+### 🟩 4. Move zeroes to the end
+
+**Approach:**  
+Keep accumulating the non zero values on the left side
+
+**Code (Python):**
+```python
+    def moveZeroes(self, nums):
+        ind = 0
+
+        for i in range(len(nums)):
+            if nums[i]!=0:
+                nums[i], nums[ind] = nums[ind], nums[i]
+                ind += 1
+```
+**Time complexity:** O(n)
