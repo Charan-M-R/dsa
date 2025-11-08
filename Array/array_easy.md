@@ -141,3 +141,60 @@ Keep accumulating the non zero values on the left side
                 ind += 1
 ```
 **Time complexity:** O(n)
+
+### 🟩 5. Second Largest Element in an Array without sorting
+
+**Approach:**  
+Keep two vars - largest and second largest
+
+**Code (Python):**
+```python
+def secondLargest(arr, n):
+    if (n < 2):
+        return -1
+    large = float('-inf')
+    second_large = float('-inf')
+    for i in range(n):
+        if (arr[i] > large):
+            second_large = large
+            large = arr[i]
+        elif (arr[i] > second_large and arr[i] != large):
+            second_large = arr[i]
+    return second_large
+```
+**Time complexity:** O(n)
+
+### 🟩 6. Find union of two sorted arrays
+
+### 🟩 7. Find the missing number in an array
+
+https://leetcode.com/problems/missing-number/description/
+
+**Approach 1:**  
+Find XOR of 1 to n. Then traverse through the array and apply xor with values of arr. Resulting value is missing number
+
+**Code (Python):**
+```python
+def missingNumber(a, N):
+    xor1 = 0
+    xor2 = 0
+
+    for i in range(N - 1):
+        xor2 = xor2 ^ a[i]  # XOR of array elements
+        xor1 = xor1 ^ (i + 1)  # XOR up to [1...N-1]
+    
+    xor1 = xor1 ^ N  # XOR up to [1...N]
+
+    return xor1 ^ xor2  # the missing number
+```
+**Time complexity:** O(n)
+
+**Approach 2:**  
+n*(n+1)/2 - sum(nums)
+
+**Code (Python):**
+```python
+    def missingNumber(self, nums):
+        return len(nums)*(len(nums)+1)//2 - sum(nums)
+```
+**Time complexity:** O(n)
