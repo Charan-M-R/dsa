@@ -166,9 +166,7 @@ def secondLargest(arr, n):
 
 ### 🟩 6. Find union of two sorted arrays
 
-### 🟩 7. Find the missing number in an array
-
-https://leetcode.com/problems/missing-number/description/
+### 🟩 7. Find the missing number in an array - https://leetcode.com/problems/missing-number/description/
 
 **Approach 1:**  
 Find XOR of 1 to n. Then traverse through the array and apply xor with values of arr. Resulting value is missing number
@@ -198,3 +196,41 @@ n*(n+1)/2 - sum(nums)
         return len(nums)*(len(nums)+1)//2 - sum(nums)
 ```
 **Time complexity:** O(n)
+
+### 🟩 8. Find the number that appears once, and the other numbers twice - https://leetcode.com/problems/single-number/description/
+
+**Approach 1:**  
+Use hash to store frequence
+
+**Code (Python):**
+```python
+    def singleNumber(self, nums):
+        freq = {}
+        for i in nums:
+            freq.setdefault(i, 0)
+            freq[i] += 1
+        for i in freq.keys():
+            if freq[i]==1:
+                return i
+```
+**Time complexity:** O(n)
+**SPace complexity:** O(n)
+
+**Approach 2:**  
+XOR of all elements
+
+**Code (Python):**
+```python
+    def singleNumber(self, nums):
+        res = 0
+        for i in range(len(nums)):
+            res = res ^ nums[i]
+        return res
+```
+**Time complexity:** O(n)
+
+### 🟩 9. Longest subarray with given sum K (positives)
+
+### 🟩 10. Longest subarray with given sum K (positives + negatives)
+
+
