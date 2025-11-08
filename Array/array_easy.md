@@ -85,3 +85,42 @@ Keep accumulating the distinct values on the left side
         return ind+1
 ```
 **Time complexity:** O(n)
+
+### 🟩 3. Right rotate an array by k places
+
+**Approach 1:**  
+Create a temp array which is copy of nums. Traverse through 0,len-1 and for each ind get ind-k
+
+**Code (Python):**
+```python
+    def rotate(self, nums, k):
+        temp = nums[:]
+        for i in range(len(nums)):
+            nums[i] = temp[(i-k)%len(nums)]
+```
+**Time complexity:** O(n)
+**Space complexity:** O(n)
+
+**Approach 2:**  
+Reverse the arr. Reverse 0 to k-1 and Reverse k to len(nums)-1
+
+**Code (Python):**
+```python
+    def rotate(self, nums, k):
+        nums.reverse()
+        k = k%len(nums)
+        i = 0
+        j = k-1
+        while i<j:
+            nums[i], nums[j] = nums[j], nums[i]
+            i+=1
+            j-=1
+
+        i = k
+        j = len(nums)-1
+        while i<j:
+            nums[i], nums[j] = nums[j], nums[i]
+            i+=1
+            j-=1
+```
+**Time complexity:** O(n)
