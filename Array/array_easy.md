@@ -1,4 +1,4 @@
-# 🔍 Array problems - East
+# 🔍 Array problems - Easy
 
 ## 📘 Problems & Approaches
 
