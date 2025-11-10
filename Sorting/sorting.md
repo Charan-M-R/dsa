@@ -97,4 +97,4 @@ Split arr into two -> sort the arr recursively -> Merge the sorted arrays
         self.mergeSort(arr,mid+1,r)
         self.merge(arr,l,mid,r)
   ```
-**Time complexity:** O(n^2) for worst and average cases. Best case is O(n)
+**Time complexity:** O(n*log(n))
