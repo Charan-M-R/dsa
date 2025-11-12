@@ -93,11 +93,11 @@
         return node1
 ```
 
-### 🟩 5. Linked list with a cycle - https://leetcode.com/problems/linked-list-cycle/
+### 🟩 5. Linked list with a cycle 
 
 **Approach:**  Tortoise and Hare method (Floyd’s Cycle Detection Algorithm)
 
-**sub problem 1:** Find if linked list has a cycle
+**sub problem 1:** Find if linked list has a cycle - https://leetcode.com/problems/linked-list-cycle/
 **Code (Python):**
 ```python
     def hasCycle(self, head):
@@ -114,7 +114,7 @@
         return False
 ```
 
-**sub problem 2:** Find the node where cycle starts
+**sub problem 2:** Find the node where cycle starts - https://leetcode.com/problems/linked-list-cycle-ii/
 **Code (Python):**
 ```python
     def detectCycle(self, head):
