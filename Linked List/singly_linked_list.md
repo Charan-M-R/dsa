@@ -43,6 +43,7 @@
 
 ### 🟩 3. Reversing a linked list 
 
+**Approach 1:**  Iterative
 **Code (Python):**
 ```python
     def reverse(self, head):
@@ -56,4 +57,17 @@
             curr = nxt
         
         return prev
+```
+
+**Approach 2:**  Recursive
+**Code (Python):**
+```python
+    def reverseList(self, head):
+        if head is None or head.next is None:
+            return head
+
+        newHead = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
+        return newHead
 ```
