@@ -142,6 +142,7 @@
 Explanation: When slow reaches head of cycle, fast is already L (length of head to cycle start) places ahead. So hypothetically, if you reverse L places of slow node, thats what slow and fast would have previously met. So this means that in our case when slow and fast met, we need to push fast node by L places to get to the start of cycle
 
 **Sub problem 3:** Find length of cycle - https://www.geeksforgeeks.org/problems/find-length-of-loop/1
+
 **Code (Python):**
 ```python
     def lengthOfLoop(self, head):
