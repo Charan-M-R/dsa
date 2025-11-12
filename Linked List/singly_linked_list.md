@@ -41,7 +41,7 @@
         node.next = node.next.next
 ```
 
-### 🟩 3. Reversing a linked list 
+### 🟩 3. Reversing a linked list - https://leetcode.com/problems/reverse-linked-list/
 
 **Approach 1:**  Iterative
 **Code (Python):**
@@ -71,3 +71,72 @@
         head.next = None
         return newHead
 ```
+
+
+### 🟩 4. Find middle of a linked list - https://leetcode.com/problems/middle-of-the-linked-list/
+
+**Approach 1:**  Find length of linked list first and then traverse l//2 times
+
+**Approach 2:**  Tortoise and Hare method
+**Code (Python):**
+```python
+    def middleNode(self, head):
+        node1 = head
+        node2 = head
+
+        while node2.next is not None:
+            node1 = node1.next
+            node2 = node2.next
+            if node2.next:
+                node2 = node2.next
+
+        return node1
+```
+
+### 🟩 5. Linked list with a cycle - https://leetcode.com/problems/linked-list-cycle/
+
+**Approach:**  Tortoise and Hare method (Floyd’s Cycle Detection Algorithm)
+
+**sub problem 1:** Find if linked list has a cycle
+**Code (Python):**
+```python
+    def hasCycle(self, head):
+        node1 = head
+        node2 = head
+
+        while node1 and node1.next:
+            node1 = node1.next.next
+            node2 = node2.next
+
+            if node1 == node2:
+                return True
+        
+        return False
+```
+
+**sub problem 2:** Find the node where cycle starts
+**Code (Python):**
+```python
+    def detectCycle(self, head):
+        slow = head
+        fast = head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+            if slow == fast:
+                break
+
+        if not (fast and fast.next):
+            return None
+
+        slow = head
+        while slow!=fast:
+            slow = slow.next
+            fast = fast.next
+
+        return fast
+```
+
+Explanation: When slow reaches head of cycle, fast is already L (length of head to cycle start) places ahead. So hypothetically, if you reverse L places of slow node, thats what slow and fast would have previously met. So this means that in our case when slow and fast met, we need to push fast node by L places to get to the start of cycle
