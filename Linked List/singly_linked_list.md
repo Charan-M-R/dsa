@@ -40,3 +40,20 @@
         node.val = node.next.val
         node.next = node.next.next
 ```
+
+### 🟩 3. Reversing a linked list 
+
+**Code (Python):**
+```python
+    def reverse(self, head):
+        prev = None
+        curr = head
+        
+        while curr is not None:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr        
+            curr = nxt
+        
+        return prev
+```
