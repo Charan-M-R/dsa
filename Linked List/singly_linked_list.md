@@ -171,7 +171,7 @@ Explanation: When slow reaches head of cycle, fast is already L (length of head 
         return count
 ```
 
-### 🟩 6. Check if linked list is a palindrome 
+### 🟩 6. Check if linked list is a palindrome - https://leetcode.com/problems/palindrome-linked-list/
 
 **Approach 1:**  Temporary space (store the values in stack in first traversal). During second traversal, pop the values of the stack
 
