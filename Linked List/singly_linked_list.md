@@ -212,3 +212,28 @@ Explanation: When slow reaches head of cycle, fast is already L (length of head 
         return True
         
 ```
+
+### 🟩 7. Segregate odd and even indexed nodes in linked list - https://leetcode.com/problems/odd-even-linked-list/
+
+**Approach 1:**  Create two pointers - even and odd. Keep adding to this as you traverse
+
+**Code (Python):**
+```python
+    def oddEvenList(self, head):
+        if head is None or head.next is None:
+            return head
+        
+        odd = head
+        even = head.next
+        evenHead = even
+
+        while even and even.next:
+            odd.next = even.next
+            odd = odd.next
+
+            even.next = even.next.next
+            even = even.next
+
+        odd.next = evenHead
+        return head
+```
