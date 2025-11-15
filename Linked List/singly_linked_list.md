@@ -237,3 +237,30 @@ Explanation: When slow reaches head of cycle, fast is already L (length of head 
         odd.next = evenHead
         return head
 ```
+### 🟩 8. Remove nth node from last - https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
+
+**Approach 1:**  Find length of linked list and subtract it by n. Traverse L-n and delete that node
+
+**Approach 2:**  Tortoise and Hare method (Floyd’s Cycle Detection Algorithm) - create a diff of n between fast and slow at the start. When fast.next becomes null, remove slow.next node
+
+**Code (Python):**
+```python
+    def removeNthFromEnd(self, head, n):
+        diff = n
+        slow = head
+        fast = head
+
+        while diff:
+            fast = fast.next
+            diff -= 1
+
+        if fast is None:
+            return head.next
+
+        while fast.next:
+            fast = fast.next
+            slow = slow.next
+
+        slow.next = slow.next.next
+        return head
+```
