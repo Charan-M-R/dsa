@@ -170,3 +170,45 @@ Explanation: When slow reaches head of cycle, fast is already L (length of head 
             
         return count
 ```
+
+### 🟩 6. Check if linked list is a palindrome 
+
+**Approach 1:**  Temporary space (store the values in stack in first traversal). During second traversal, pop the values of the stack
+
+**Approach 2:**  Tortoise and Hare method (Floyd’s Cycle Detection Algorithm) and reverse the second part of the linked list
+
+**Code (Python):**
+```python
+    def reverse(self, head):
+        curr = head
+        prev = None
+        while curr:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
+        return prev
+
+    def isPalindrome(self, head):
+        if head is None or head.next is None:
+            return True
+
+        slow = head
+        fast = head
+        while fast.next and fast.next.next:
+            slow = slow.next
+            fast = fast.next.next
+        newHead = self.reverse(slow.next)
+
+        node1 = head
+        node2 = newHead
+        while node2:
+            if node1.val!=node2.val:
+                return False
+            node1 = node1.next
+            node2 = node2.next
+        self.reverse(node1)
+
+        return True
+        
+```
