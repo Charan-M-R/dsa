@@ -264,3 +264,89 @@ Explanation: When slow reaches head of cycle, fast is already L (length of head 
         slow.next = slow.next.next
         return head
 ```
+
+### 🟩 9. Find Intersection point - https://leetcode.com/problems/intersection-of-two-linked-lists/
+
+**Approach 1:**  Brute force - double loop
+**Approach 2:**  Hash - hash node addresses
+
+**Approach 3:**  Difference in length
+
+**Code (Python):**
+```python
+    def getIntersectionNode(self, headA, headB):
+        l1 = 0
+        curr = headA
+        while curr:
+            curr = curr.next
+            l1 += 1
+
+        l2 = 0
+        curr = headB
+        while curr:
+            curr = curr.next
+            l2 += 1
+
+        diff = l1-l2
+        currA = headA
+        currB = headB
+        if diff>0:
+            while diff:
+                currA = currA.next
+                diff-=1
+        if diff<0:
+            while diff:
+                currB = currB.next
+                diff+=1
+        while currA!=currB:
+            currA = currA.next
+            currB = currB.next
+
+        return currA
+```
+
+### 🟩 10. Add 2 numbers - https://leetcode.com/problems/add-two-numbers/description/
+
+**Approach:**  Loop through linked lists, update sum and carry and create new nodes
+
+**Code (Python):**
+```python
+    def addTwoNumbers(self, l1, l2):
+        sum_ = 0
+        carry = 0
+
+        c1 = l1
+        c2 = l2
+        l3 = ListNode()
+        c3 = l3
+
+        while c1 and c2:
+            sum_ = (c1.val + c2.val + carry)%10
+            carry = (c1.val + c2.val + carry)//10
+
+            c3.next = ListNode(sum_)
+            c3 = c3.next
+            c1 = c1.next
+            c2 = c2.next
+
+        while c1:
+            sum_ = (c1.val + carry)%10
+            carry = (c1.val + carry)//10
+
+            c3.next = ListNode(sum_)
+            c3 = c3.next
+            c1 = c1.next
+
+        while c2:
+            sum_ = (c2.val + carry)%10
+            carry = (c2.val + carry)//10
+
+            c3.next = ListNode(sum_)
+            c3 = c3.next
+            c2 = c2.next
+
+        if carry>0:
+            c3.next = ListNode(carry)
+
+        return l3.next
+```
