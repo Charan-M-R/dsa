@@ -166,6 +166,10 @@ def secondLargest(arr, n):
 
 ### 🟩 6. Find union of two sorted arrays
 
+**Approach 1:** Using map to store frequencies
+**Approach 2:** Using set to store values from each array
+**Approach 3:** Using 2 pointers
+
 ### 🟩 7. Find the missing number in an array - https://leetcode.com/problems/missing-number/description/
 
 **Approach 1:**  
@@ -229,8 +233,13 @@ XOR of all elements
 ```
 **Time complexity:** O(n)
 
-### 🟩 9. Longest subarray with given sum K (positives)
+### 🟩 9. Longest subarray with given sum K (positives & negatives)
 
-### 🟩 10. Longest subarray with given sum K (positives + negatives)
+**Approach 1:** Double loop (i=starting index, j=ending index). One more loop to calculate sum. 
+This can be optimized without using the third loop. Save the sum after each iteration in j loop
+
+**Approach 2:** Using hashmap - prefix sum - loop i (0 to n-1), keep storing the prefix sum in the hash. Check if x-k is in hashmap
+
+**Approach 3 (only for positives):** Using 2 pointers
 
 
