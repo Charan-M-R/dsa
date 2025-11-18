@@ -403,3 +403,40 @@ Explanation: When slow reaches head of cycle, fast is already L (length of head 
 
         return self.sortLinkedLists(left, right)
 ```
+
+### 🟩 11. Reverse LL in group of given size K - https://leetcode.com/problems/reverse-nodes-in-k-group/
+
+**Code (Python):**
+```python
+    def reverse(self, head):
+        curr = head
+        prev = None
+
+        while curr:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
+
+        return prev
+
+    def reverseKGroup(self, head, k):
+        newHead = dummy = ListNode(1)
+
+        while head:
+            curr = head
+            for i in range(k-1):
+                curr = curr.next
+                if not curr:
+                    dummy.next = head
+                    return newHead.next
+
+            nextCurr = curr.next
+            curr.next = None
+
+            dummy.next = self.reverse(head)
+            dummy = head
+            head = nextCurr
+
+        return newHead.next
+```
