@@ -350,3 +350,56 @@ Explanation: When slow reaches head of cycle, fast is already L (length of head 
 
         return l3.next
 ```
+
+### 🟩 10. Sorting linked list - https://leetcode.com/problems/sort-list/description/
+
+**Code (Python):**
+```python
+    def findMiddle(self, head):
+        if not head or not head.next:
+            return head
+
+        slow = head
+        fast = head.next
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        return slow
+
+    def sortLinkedLists(self, left, right):
+        temp = ListNode(1)
+        head = temp
+
+        while left and right:
+            if left.val < right.val:
+                temp.next = left
+                left = left.next
+            else:
+                temp.next = right
+                right = right.next
+            temp = temp.next
+
+        if left:
+            temp.next = left
+        if right:
+            temp.next = right
+
+        return head.next
+
+    def sortList(self, head):
+        if not head or not head.next:
+            return head
+
+        middle = self.findMiddle(head)
+
+        left = head
+        right = middle.next
+        middle.next = None
+
+        left = self.sortList(left)
+        right = self.sortList(right)
+
+        return self.sortLinkedLists(left, right)
+```
