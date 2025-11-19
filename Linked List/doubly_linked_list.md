@@ -93,3 +93,7 @@ def insert_end(head, new_data):
             
         return prev
 ```
+
+### 🟩 4. Delete all occurrences of a key in DLL
+### 🟩 5. Find pairs with given sum in DLL
+### 🟩 6. Remove duplicates from sorted DLL
