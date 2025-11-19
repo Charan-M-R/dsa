@@ -440,3 +440,7 @@ Explanation: When slow reaches head of cycle, fast is already L (length of head 
 
         return newHead.next
 ```
+
+### 🟩 12. Rotate a LL
+### 🟩 13. Flattening of LL
+### 🟩 14. Clone a Linked List with random and next pointer
