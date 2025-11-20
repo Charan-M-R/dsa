@@ -93,7 +93,42 @@
         for i in range(min(len(l),len(r))):
             if l[i]!=r[i]:
                 return l[:i]
-
-        return l
 ```
-**Time complexity:** O(n*log(n))
+
+### 🟩 5. Isomorphic Strings - https://leetcode.com/problems/isomorphic-strings/description/
+
+**Approach 1:** Using 2 hash maps to save mappings
+**Code (Python):**
+```python
+    def isIsomorphic(self, s, t):
+        hashMapS = {}
+        hashMapT = {}
+
+        for i in range(len(s)):
+            if (s[i] in hashMapS and hashMapS[s[i]] != t[i]) or (t[i] in hashMapT and hashMapT[t[i]] != s[i]):
+                return False
+            else:
+                hashMapS[s[i]] = t[i]
+                hashMapT[t[i]] = s[i]
+
+        return True
+```
+**Time complexity:** O(n)
+
+**Approach 2:** Use 2 arrays to store last seen index of an alphabet
+**Code (Python):**
+```python
+    def isIsomorphic(self, s, t):
+        m1 = [-1]*130
+        m2 = [-1]*130
+
+        for i in range(len(s)):
+            if m1[ord(s[i])]!=m2[ord(t[i])]:
+                return False
+
+            m1[ord(s[i])] = i
+            m2[ord(t[i])] = i
+        
+        return True
+```
+**Time complexity:** O(n)
