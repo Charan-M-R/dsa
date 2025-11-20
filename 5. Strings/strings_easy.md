@@ -132,3 +132,60 @@
         return True
 ```
 **Time complexity:** O(n)
+
+### 🟩 6. Rotate String - https://leetcode.com/problems/rotate-string/
+
+**Approach 1:** Loop through 0 to n and generate all substring to compare with goal
+**Code (Python):**
+```python
+    def rotateString(self, s, goal):
+        for i in range(len(s)):
+            if s[i:] + s[:i] == goal:
+                return True
+
+        return False
+```
+**Time complexity:** O(n^2)
+
+**Approach 2:** Use 2 arrays to store last seen index of an alphabet
+**Code (Python):**
+```python
+    def isIsomorphic(self, s, t):
+        m1 = [-1]*130
+        m2 = [-1]*130
+
+        for i in range(len(s)):
+            if m1[ord(s[i])]!=m2[ord(t[i])]:
+                return False
+
+            m1[ord(s[i])] = i
+            m2[ord(t[i])] = i
+        
+        return True
+```
+**Time complexity:** Average case: O(n), Worse case: O(n^2)
+
+### 🟩 7. Valid Anagram - https://leetcode.com/problems/valid-anagram/description/
+
+**Approach 1:** Sort the strings and compare
+**Time complexity:** O(n*log(n))
+
+**Approach 2:** Use freq array
+**Code (Python):**
+```python
+    def isAnagram(self, s, t):
+        if len(s)!=len(t):
+            return False
+            
+        word_freq = [0]*26
+
+        for i in s:
+            word_freq[ord(i)-ord('a')] += 1
+        for i in t:
+            word_freq[ord(i)-ord('a')] -= 1
+            if word_freq[ord(i)-ord('a')] == -1:
+                return False
+
+        return True
+```
+**Time complexity:** O(n)
